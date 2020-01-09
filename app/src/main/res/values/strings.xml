@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">自律打卡</string>
+    <string name="desc_main">当前得分 %d</string>
+    <string name="ok">+1</string>
+    <string name="up">厉害！继续保持哟！</string>
+    <string name="desc">今天我自律了吗？</string>
+    <string name="bad">-1</string>
+    <string name="zero_scores">已经0分啦！</string>
+    <string name="harry_up">小心，不要太放纵哟！</string>
+    <string name="time">时间 %s</string>
+    <string name="curr_value">剩余分数 %d</string>
+    <string name="status_add">状态: +1</string>
+    <string name="status_sub">状态: -1</string>
+    <string name="status_zero">状态: 未改变</string>
+    <string name="unknownError">未知错误</string>
+    <string name="dialog_title">提示</string>
+    <string name="dialog_desc">确定要清除所有记录？</string>
+    <string name="dialog_ok">当然要</string>
+    <string name="dialog_cancel">是我手滑了</string>
+    <string name="cancled">已取消操作</string>
+</resources>
