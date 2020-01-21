@@ -22,9 +22,9 @@ public class RecordAdapter extends ArrayAdapter<Record> {
     private int textViewId;
 
 
-    public RecordAdapter(Context context, int textViewResourceId, List<Record> obj){
-        super(context, textViewResourceId, obj);
-        textViewId = textViewResourceId;
+    public RecordAdapter(Context context, int layoutId, List<Record> obj){
+        super(context, layoutId, obj);
+        textViewId = layoutId;
     }
 
     @NonNull

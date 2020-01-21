@@ -88,6 +88,7 @@ public class MyDataControl {
         values.put(MyDBHelper.DataTable.Cols.DATE, record.getDate().getTime());
         values.put(MyDBHelper.DataTable.Cols.VALUE, record.getValue());
         values.put(MyDBHelper.DataTable.Cols.STATUS, record.getStatus());
+        values.put(MyDBHelper.DataTable.Cols.TARGET,record.getTarget());
 
         return values;
     }

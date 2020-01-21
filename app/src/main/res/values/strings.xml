@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name">自律打卡</string>
     <string name="desc_main">当前得分 %d</string>
+    <string name="desc_target">目标分值 %d</string>
     <string name="ok">+1</string>
     <string name="up">厉害！继续保持哟！</string>
     <string name="desc">今天我自律了吗？</string>
     <string name="bad">-1</string>
     <string name="zero_scores">已经0分啦！</string>
+    <string name="fine">目标完成！</string>
+    <string name="fined">目标已经完成！</string>
     <string name="harry_up">小心，不要太放纵哟！</string>
+    <string name="untitled">未标题</string>
     <string name="time">时间 %s</string>
     <string name="curr_value">剩余分数 %d</string>
     <string name="status_add">状态: +1</string>
@@ -14,8 +18,17 @@
     <string name="status_zero">状态: 未改变</string>
     <string name="unknownError">未知错误</string>
     <string name="dialog_title">提示</string>
-    <string name="dialog_desc">确定要清除所有记录？</string>
+    <string name="dialog_del_all">确定要清除所有记录？</string>
+    <string name="dialog_blank">失败,有信息还未填写完毕</string>
+    <string name="dialog_del">确定要删除此项？</string>
     <string name="dialog_ok">当然要</string>
+    <string name="submit">提交</string>
+    <string name="cancel">取消</string>
     <string name="dialog_cancel">是我手滑了</string>
-    <string name="cancled">已取消操作</string>
+    <string name="canceled">已取消操作</string>
+    <string name="loading">加载中...</string>
+    <string name="card_desc">目标的描述</string>
+    <string name="target_val">目标达到的期望值</string>
+    <string name="target">目标值</string>
+    <string name="title">目标名称</string>
 </resources>

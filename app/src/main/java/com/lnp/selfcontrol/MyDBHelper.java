@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyDBHelper extends SQLiteOpenHelper {
     private static final String TAG = "MyDBHelper";
-    private static final int VERSION = 2;
+    private static final int VERSION = 3;
     private static final String DATABASE_NAME = "MyData.db";
 
 
@@ -22,23 +22,18 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 DataTable.Cols.TITLE + ", " +
                 DataTable.Cols.DATE + ", " +
                 DataTable.Cols.VALUE + ", " +
-                DataTable.Cols.STATUS +
+                DataTable.Cols.STATUS + ", " +
+                DataTable.Cols.TARGET +
                 ")"
         );
+
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("drop table " + DataTable.NAME);
-        sqLiteDatabase.execSQL("create table " + DataTable.NAME + "(" +
-                " _id integer primary key autoincrement, " +
-                DataTable.Cols.UUID + ", " +
-                DataTable.Cols.TITLE + ", " +
-                DataTable.Cols.DATE + ", " +
-                DataTable.Cols.VALUE + ", " +
-                DataTable.Cols.STATUS +
-                ")"
-        );
+        onCreate(sqLiteDatabase);
     }
 
     public static final class DataTable {
@@ -50,7 +45,10 @@ public class MyDBHelper extends SQLiteOpenHelper {
             public static final String DATE = "date";
             public static final String VALUE = "value";
             public static final String STATUS = "status";
+            public static final String TARGET = "target";
         }
+
+
     }
 }
 

@@ -9,12 +9,15 @@ public class Record {
     private Date date;
     private int value;
     private int status;
+    private int target;
+
     public Record(UUID uid) {
         id = uid;
         date = new Date();
         title = "无标题";
         value = 0;
         status = 0;
+        target = 10;
     }
 
     public int getStatus() {
@@ -42,7 +45,7 @@ public class Record {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        if (title != null) this.title = title;
     }
 
     public Date getDate() {
@@ -59,5 +62,13 @@ public class Record {
 
     public void setValue(int value) {
         this.value = value;
+    }
+
+    public int getTarget() {
+        return target;
+    }
+
+    public void setTarget(int target) {
+        this.target = target;
     }
 }

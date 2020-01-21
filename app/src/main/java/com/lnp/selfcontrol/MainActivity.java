@@ -1,35 +1,90 @@
 package com.lnp.selfcontrol;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.widget.ImageButton;
-import android.widget.TextView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.melnykov.fab.FloatingActionButton;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    private ImageButton okBtn;
-    private ImageButton notBtn;
-    private TextView textView;
+    /*
+        private ImageButton okBtn;
+        private ImageButton notBtn;
+        private TextView textView;*/
     private MyDataControl mydb;
     private List<Record> myList;
+    private ListView lView;
+    private CardAdapter cardAdapter;
+    private FloatingActionButton floatingActionButton;
+    /*
     private ImageButton hisBtn;
-    private ImageButton delBtn;
+    private ImageButton delBtn;*/
     private Record record;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        okBtn = findViewById(R.id.ok_btn);
+        setContentView(R.layout.main_layout_neo);
+        lView = findViewById(R.id.card_list);
+        floatingActionButton = findViewById(R.id.fab);
+        mydb = MyDataControl.getAvailable(getApplicationContext());
+        myList = mydb.getRecords();
+        if (myList.size() == 0) {
+            record = new Record();
+            record.setTitle("自律打卡");
+            mydb.addRecord(record);
+            myList = mydb.getRecords();
+        } else {
+            record = myList.get(myList.size() - 1);
+        }
+        cardAdapter = new CardAdapter(MainActivity.this, R.layout.card_view, myList);
+        lView.setAdapter(cardAdapter);
+        floatingActionButton.attachToListView(lView);
+        floatingActionButton.setOnClickListener(v -> {
+            AlertDialog.Builder alterDiaglog = new AlertDialog.Builder(MainActivity.this, R.style.Theme_AppCompat_Light_Dialog_Alert);
+
+            //alterDiaglog.setView(R.layout.input_dialog);//加载进去
+            LayoutInflater inflater = getLayoutInflater();
+            View vie = inflater.inflate(R.layout.input_dialog, null);
+            EditText edt1 = vie.findViewById(R.id.edit_desc);
+            EditText edt2 = vie.findViewById(R.id.edit_target);
+
+            alterDiaglog.setView(vie);
+            alterDiaglog.setPositiveButton(R.string.submit,null);
+            alterDiaglog.setNegativeButton(R.string.cancel,null);
+            AlertDialog dialog = alterDiaglog.create();
+            dialog.show();
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener( (vi) -> {
+                Record rec = new Record();
+                rec.setDate(new Date());
+                if(edt1.getText().toString().equals("") || edt2.getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(),R.string.dialog_blank,Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String title = edt1.getText().toString();
+                int target = Integer.parseInt(edt2.getText().toString());
+                rec.setTarget(target);
+                rec.setTitle(title);
+                myList.add(rec);
+                mydb.addRecord(rec);
+                cardAdapter.notifyDataSetChanged();
+                dialog.dismiss();
+            });
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener((vi) -> {
+                Toast.makeText(getApplicationContext(), R.string.canceled, Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            });
+
+        });
+        /*okBtn = findViewById(R.id.ok_btn);
         notBtn = findViewById(R.id.not_good);
         textView = findViewById(R.id.textView);
         hisBtn = findViewById(R.id.history_btn);
@@ -102,10 +157,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         builder.setNegativeButton(getString(R.string.dialog_cancel), (dialogInterface, i) -> {
-            Toast.makeText(getApplicationContext(), getString(R.string.cancled), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.canceled), Toast.LENGTH_SHORT).show();
         });
 
-        builder.show();
+        builder.show();*/
     }
 
 }

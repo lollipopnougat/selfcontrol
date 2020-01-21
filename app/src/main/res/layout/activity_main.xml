@@ -29,6 +29,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
@@ -37,7 +38,7 @@
             android:gravity="center"
             android:width="300dp"
             android:textSize="20sp"
-            android:textColor="@color/secondaryText"/>
+            android:textColor="@color/secondaryText" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -59,6 +60,7 @@
                 android:src="@drawable/ic_thumb_up_24dp"
                 android:layout_marginEnd="20dp"
                 android:contentDescription="TODO" />
+
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,6 +74,7 @@
                 android:contentDescription="TODO" />
 
         </LinearLayout>
+
         <ImageButton
             android:layout_marginTop="10dp"
             android:id="@+id/history_btn"
@@ -90,5 +93,7 @@
 
 
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
